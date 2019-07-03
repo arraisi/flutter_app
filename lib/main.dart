@@ -72,9 +72,15 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Text(
-          "Hello World",
-          style: TextStyle(fontWeight: FontWeight.bold),
+        child: Container(
+          width: 250.0,
+          height: 500.0,
+          color: Colors.red,
+          child: Text(
+            "Hello World",
+            style: TextStyle(fontWeight: FontWeight.bold),
+            textAlign: TextAlign.right,
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
