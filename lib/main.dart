@@ -73,13 +73,15 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          width: 250.0,
-          height: 500.0,
-          color: Colors.red,
-          child: Text(
-            "Hello World",
-            style: TextStyle(fontWeight: FontWeight.bold),
-            textAlign: TextAlign.right,
+          child: Row(
+            children: <Widget>[
+              Text(
+                "Hello World",
+                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.pink, fontSize: 28.0),
+                textAlign: TextAlign.left,
+              ),
+              new Text("Wow")
+            ],
           ),
         ),
       ),
