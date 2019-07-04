@@ -73,7 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          child: Center(
+          child: Align(
+            alignment: Alignment.topCenter,
             child: Text("Hello world"),
           ),
         ),
