@@ -72,11 +72,17 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-          child: Transform(
-            origin: Offset(100.0, 100.0),
-            transform: Matrix4.rotationZ(-0.785),
-            child: new Image(image: AssetImage("assets/images/ironman.jpg")),
-          )),
+          child: Container(
+              child: Listener(
+                  onPointerDown: (PointerDownEvent event) {
+                    print("Clicked");
+                  },
+                  onPointerMove: (PointerMoveEvent event){
+                    print("Moved");
+                    print(event);
+                  },
+                  child: new Image(
+                      image: AssetImage("assets/images/ironman.jpg"))))),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
