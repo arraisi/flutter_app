@@ -75,12 +75,17 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Container(
           child: Row(
             children: <Widget>[
-              Text(
+              new Text(
                 "Hello World",
                 style: TextStyle(fontWeight: FontWeight.bold, color: Colors.pink, fontSize: 28.0),
                 textAlign: TextAlign.left,
               ),
-              new Text("Wow")
+              new Padding(
+//                padding: const EdgeInsets.all(20.0),
+              padding: EdgeInsets.fromLTRB(20.0, 0.0, 90.0, 0.0),
+                child: new Text("Wow"),
+              ),
+              new Text("End")
             ],
           ),
         ),
