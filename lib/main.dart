@@ -76,11 +76,15 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Row(children: [
             new Text(
               "Hello world",
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.pink, fontSize: 28.0),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.pink,
+                  fontSize: 28.0),
             ),
-            new ConstrainedBox(
-                constraints: BoxConstraints(minWidth: 10.0),
-                child: new Text("WOW")),
+            new Baseline(
+                baseline: -5.0,
+                baselineType: TextBaseline.alphabetic,
+                child: new Text("2")),
             new Text("End"),
           ]),
         ),
