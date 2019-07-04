@@ -74,11 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
           child: Container(
               child: GestureDetector(
-                  onLongPress: () {
-                    print("Long Press");
+                  onVerticalDragStart: (DragStartDetails details) {
+                    print("Start");
+                    print(details);
                   },
-                  onLongPressUp: (){
-                    print("Long Press Released");
+                  onVerticalDragUpdate: (DragUpdateDetails details){
+                    print("Update");
+                    print(details);
                   },
                   child: new Image(
                       image: AssetImage("assets/images/ironman.jpg"))))),
