@@ -72,11 +72,16 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Container(
-            child: Image(
+        child: Column(children: <Widget>[
+          AspectRatio(
+            aspectRatio: 4/3,
+            child: new Image(
                 image:
 //                  NetworkImage("https://wallpapersite.com/images/wallpapers/iron-man-1920x1200-artwork-hd-4k-10573.jpg")
-                    AssetImage("assets/images/ironman.jpg")))
+                    AssetImage("assets/images/ironman.jpg")),
+          ),
+          new Text("Hello world")
+        ]),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
