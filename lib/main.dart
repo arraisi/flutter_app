@@ -73,18 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          child: Stack(
-            alignment: AlignmentDirectional.bottomEnd,
-            children: <Widget>[
-              Text(
-                "Hello World",
-                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.pink, fontSize: 28.0),
-                textAlign: TextAlign.left,
-              ),
-              new Text("Wow")
-            ],
-          ),
-        ),
+            child: Image(
+                image:
+//                  NetworkImage("https://wallpapersite.com/images/wallpapers/iron-man-1920x1200-artwork-hd-4k-10573.jpg")
+                    AssetImage("assets/images/ironman.jpg")))
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
