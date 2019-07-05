@@ -45,6 +45,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int _selectedIndex = 1;
 
   void _incrementCounter() {
     setState(() {
@@ -57,11 +58,18 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _callContact(){
+  void _callContact() {
     print("Call Contact");
   }
-  void _addInfoToContact(){
+
+  void _addInfoToContact() {
     print("Add Information Contact");
+  }
+
+  void _itemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -81,14 +89,14 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: Icon(Icons.call),
             tooltip: "Call Contact",
-            onPressed: (){
+            onPressed: () {
               _callContact();
             },
           ),
           IconButton(
             icon: Icon(Icons.add),
             tooltip: "Add Infortmation Contact",
-            onPressed: (){
+            onPressed: () {
               _addInfoToContact();
             },
           )
@@ -96,17 +104,20 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
           child: Container(
-              child:GestureDetector(
-                  onPanStart: (DragStartDetails details) {
-                    print("Start");
-                    print(details);
-                  },
-                  onPanUpdate: (DragUpdateDetails details){
-                    print("Update");
-                    print(details);
-                  },
-                  child: new Image(
-                      image: AssetImage("assets/images/ironman.jpg"))))),
+              child:
+              new Image(image: AssetImage("assets/images/ironman.jpg")))),
+      bottomNavigationBar: BottomNavigationBar(items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+            icon: Icon(Icons.home), title: Text("Home")),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.school), title: Text("School")),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.business), title: Text("Business")),
+      ],
+        currentIndex: _selectedIndex,
+        onTap: _itemTapped,
+        fixedColor: Colors.pink,
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
