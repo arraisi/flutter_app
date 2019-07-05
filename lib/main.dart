@@ -57,6 +57,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _callContact(){
+    print("Call Contact");
+  }
+  void _addInfoToContact(){
+    print("Add Information Contact");
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -70,6 +77,22 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.call),
+            tooltip: "Call Contact",
+            onPressed: (){
+              _callContact();
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.add),
+            tooltip: "Add Infortmation Contact",
+            onPressed: (){
+              _addInfoToContact();
+            },
+          )
+        ],
       ),
       body: Center(
           child: Container(
@@ -84,11 +107,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                   child: new Image(
                       image: AssetImage("assets/images/ironman.jpg"))))),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          height: 20.0,
-        ),
-      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
