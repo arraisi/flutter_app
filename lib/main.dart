@@ -84,6 +84,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                   child: new Image(
                       image: AssetImage("assets/images/ironman.jpg"))))),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 20.0,
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
