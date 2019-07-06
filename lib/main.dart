@@ -72,6 +72,11 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void ButtonClick()
+  {
+    print("Button is clicked");
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -81,27 +86,23 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
+      ),
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+          child: FlatButton(
+            onPressed: ButtonClick,
+            child: Text("Click Me"),
+            color: Colors.blue,
+            textColor: Colors.white,
+            highlightColor: Colors.black,
+          )
+      ),
 
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            pinned: true,
-            expandedHeight: 100.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text("Epic Sliver"),
-            ),
-          ),
-          SliverFixedExtentList(delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index){
-                return Container(
-                  child: Text("List item $index"),
-                  alignment: Alignment.center,
-                  color: Colors.pink,
-                );
-              }, childCount: 20
-          ), itemExtent: 50)
-        ],
-      )
     );
   }
 }
