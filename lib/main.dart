@@ -80,49 +80,24 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.call),
-            tooltip: "Call Contact",
-            onPressed: () {
-              _callContact();
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.add),
-            tooltip: "Add Infortmation Contact",
-            onPressed: () {
-              _addInfoToContact();
-            },
-          )
-        ],
-      ),
-      body: Center(
-          child: Container(
-              child:
-              new Image(image: AssetImage("assets/images/ironman.jpg")))),
-      bottomNavigationBar: BottomNavigationBar(items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home), title: Text("Home")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.school), title: Text("School")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.business), title: Text("Business")),
-      ],
-        currentIndex: _selectedIndex,
-        onTap: _itemTapped,
-        fixedColor: Colors.pink,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    return MaterialApp(
+      home: DefaultTabController(
+          length: 3,
+          child: Scaffold(
+            appBar: AppBar(
+              bottom: TabBar(tabs: [
+                Tab(icon: Icon(Icons.directions_railway)),
+                Tab(icon: Icon(Icons.directions_subway)),
+                Tab(icon: Icon(Icons.directions_bike)),
+              ]),
+              title: Text("Tab Bar"),
+            ),
+            body: TabBarView(children: [
+              Icon(Icons.directions_railway),
+              Icon(Icons.directions_subway),
+              Icon(Icons.directions_bike),
+            ]),
+          )),
     );
   }
 }
