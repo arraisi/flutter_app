@@ -80,24 +80,26 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return MaterialApp(
-      home: DefaultTabController(
-          length: 3,
-          child: Scaffold(
-            appBar: AppBar(
-              bottom: TabBar(tabs: [
-                Tab(icon: Icon(Icons.directions_railway)),
-                Tab(icon: Icon(Icons.directions_subway)),
-                Tab(icon: Icon(Icons.directions_bike)),
-              ]),
-              title: Text("Tab Bar"),
-            ),
-            body: TabBarView(children: [
-              Icon(Icons.directions_railway),
-              Icon(Icons.directions_subway),
-              Icon(Icons.directions_bike),
-            ]),
-          )),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Drawer"),
+      ),
+      drawer: Drawer(
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.directions_bike),
+              title: Text("Go Bike"),
+              onTap: () {
+                print("Nice");
+              },
+            )
+          ],
+        ),
+      ),
+      body: Center(
+        child: Image(image: AssetImage("assets/images/ironman.jpg")),
+      ),
     );
   }
 }
