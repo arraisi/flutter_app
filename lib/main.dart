@@ -81,25 +81,27 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Drawer"),
-      ),
-      drawer: Drawer(
-        child: Column(
-          children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.directions_bike),
-              title: Text("Go Bike"),
-              onTap: () {
-                print("Nice");
-              },
-            )
-          ],
-        ),
-      ),
-      body: Center(
-        child: Image(image: AssetImage("assets/images/ironman.jpg")),
-      ),
+
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            pinned: true,
+            expandedHeight: 100.0,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text("Epic Sliver"),
+            ),
+          ),
+          SliverFixedExtentList(delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index){
+                return Container(
+                  child: Text("List item $index"),
+                  alignment: Alignment.center,
+                  color: Colors.pink,
+                );
+              }, childCount: 20
+          ), itemExtent: 50)
+        ],
+      )
     );
   }
 }
