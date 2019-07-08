@@ -46,6 +46,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int _selectedIndex = 1;
+  bool checkBoxValue = false;
 
   void _incrementCounter() {
     setState(() {
@@ -95,12 +96,20 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
 
-          child: RaisedButton(
-            onPressed: ButtonClick,
-            child: Text("Click me"),
-            color: Colors.red,
-            textColor: Colors.white,
-            highlightColor: Colors.black,
+          child: Row(
+            children: <Widget>[
+              Checkbox(
+                value: checkBoxValue,
+                onChanged: (bool value) {
+                  print(value);
+
+                  setState(() {
+                    checkBoxValue = value;
+                  });
+                },
+              ),
+              Text("Notifications"),
+            ],
           )
       ),
 
