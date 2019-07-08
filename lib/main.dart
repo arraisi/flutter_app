@@ -47,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int _selectedIndex = 1;
   bool checkBoxValue = false;
+  String txt = "";
 
   void _incrementCounter() {
     setState(() {
@@ -94,23 +95,16 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
-          child: DropdownButton<String>(
-              value: dropdownStr,
-              onChanged: (String newValue) {
-                setState(() {
-                  dropdownStr = newValue;
-                });
-              },
-              items: <String>[
-                'Batman Begins',
-                'The Dark Knight',
-                'The Dark Knight Rises'
-              ].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                    value: value, child: Text(value));
-              }).toList())),
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+
+          child: TextField(
+            onChanged: (String str) {
+              print(str);
+              txt = str;
+            },
+          )
+      ),
     );
   }
 }
