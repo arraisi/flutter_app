@@ -73,10 +73,11 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void ButtonClick()
-  {
+  void ButtonClick() {
     print("Button is clicked");
   }
+
+  String dropdownStr = 'Batman Begins';
 
   @override
   Widget build(BuildContext context) {
@@ -93,26 +94,23 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-
-          child: Row(
-            children: <Widget>[
-              Checkbox(
-                value: checkBoxValue,
-                onChanged: (bool value) {
-                  print(value);
-
-                  setState(() {
-                    checkBoxValue = value;
-                  });
-                },
-              ),
-              Text("Notifications"),
-            ],
-          )
-      ),
-
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: DropdownButton<String>(
+              value: dropdownStr,
+              onChanged: (String newValue) {
+                setState(() {
+                  dropdownStr = newValue;
+                });
+              },
+              items: <String>[
+                'Batman Begins',
+                'The Dark Knight',
+                'The Dark Knight Rises'
+              ].map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                    value: value, child: Text(value));
+              }).toList())),
     );
   }
 }
