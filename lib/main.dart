@@ -43,12 +43,15 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int _selectedIndex = 1;
   bool checkBoxValue = false;
   int group = 1;
   String txt = "";
+  WhyFarther _selection;
 
   void _incrementCounter() {
     setState(() {
@@ -99,42 +102,27 @@ class _MyHomePageState extends State<MyHomePage> {
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
 
-          child: Row(
-        children: <Widget>[
-          Radio(
-            value: 1,
-            groupValue: group,
-            onChanged: (T) {
-              print(T);
-
-              setState(() {
-                group = T;
-              });
-            },
-          ),
-          Radio(
-            value: 2,
-            groupValue: group,
-            onChanged: (T) {
-              print(T);
-
-              setState(() {
-                group = T;
-              });
-            },
-          ),
-          Radio(
-            value: 3,
-            groupValue: group,
-            onChanged: (T) {
-              print(T);
-
-              setState(() {
-                group = T;
-              });
-            },
-          )
-        ],
+          child: PopupMenuButton<WhyFarther>(
+        onSelected: (WhyFarther result) {
+          print(result);
+          setState(() {
+            _selection = result;
+          });
+        },
+        itemBuilder: (BuildContext context) => <PopupMenuEntry<WhyFarther>>[
+              const PopupMenuItem<WhyFarther>(
+                  value: WhyFarther.harder,
+                  child: Text('Working a lot harder')),
+              const PopupMenuItem<WhyFarther>(
+                  value: WhyFarther.smarter,
+                  child: Text('Being a lot smarter')),
+              const PopupMenuItem<WhyFarther>(
+                  value: WhyFarther.selfStarter,
+                  child: Text('Being a self-starter')),
+              const PopupMenuItem<WhyFarther>(
+                  value: WhyFarther.tradingCharter,
+                  child: Text('Placed in charge of the trading charter')),
+            ],
       )),
     );
   }
