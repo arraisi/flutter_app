@@ -52,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int group = 1;
   String txt = "";
   WhyFarther _selection;
+  int _volume = 100;
 
   void _incrementCounter() {
     setState(() {
@@ -99,31 +100,19 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
-
-          child: PopupMenuButton<WhyFarther>(
-        onSelected: (WhyFarther result) {
-          print(result);
-          setState(() {
-            _selection = result;
-          });
-        },
-        itemBuilder: (BuildContext context) => <PopupMenuEntry<WhyFarther>>[
-              const PopupMenuItem<WhyFarther>(
-                  value: WhyFarther.harder,
-                  child: Text('Working a lot harder')),
-              const PopupMenuItem<WhyFarther>(
-                  value: WhyFarther.smarter,
-                  child: Text('Being a lot smarter')),
-              const PopupMenuItem<WhyFarther>(
-                  value: WhyFarther.selfStarter,
-                  child: Text('Being a self-starter')),
-              const PopupMenuItem<WhyFarther>(
-                  value: WhyFarther.tradingCharter,
-                  child: Text('Placed in charge of the trading charter')),
-            ],
-      )),
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+          child: IconButton(
+            icon: Icon(Icons.volume_down),
+            tooltip: "Volume",
+            onPressed: () {
+              setState(() {
+                _volume -= 10;
+                print(_volume);
+              });
+            },
+          )
+      ),
     );
   }
 }
