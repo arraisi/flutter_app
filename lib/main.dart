@@ -102,15 +102,22 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-          child: IconButton(
-            icon: Icon(Icons.volume_down),
-            tooltip: "Volume",
-            onPressed: () {
-              setState(() {
-                _volume -= 10;
-                print(_volume);
-              });
-            },
+          child: ButtonBar(
+            alignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FlatButton(
+                  onPressed: () {
+
+                  },
+                  child: Text("Hello")
+              ),
+              FlatButton(
+                  onPressed: () {
+
+                  },
+                  child: Text("Second Button")
+              )
+            ],
           )
       ),
     );
