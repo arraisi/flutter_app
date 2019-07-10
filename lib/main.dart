@@ -45,7 +45,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool switchState = false;
 
   @override
   Widget build(BuildContext context) {
@@ -57,25 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
-          leading: Icon(Icons.arrow_back_ios),
-          middle: Text(
-            "Epic App",
-            style: TextStyle(color: Colors.white),
+          trailing: CupertinoButton(
+              child: Text("Save")
           ),
-          trailing: Icon(Icons.account_circle),
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.red,
         ),
         child: SafeArea(
             child: Container(
-                child: CupertinoSwitch(
-          value: switchState,
-          onChanged: (bool value) {
-            setState(() {
-              switchState = value;
-            });
 
-            print(value);
-          },
-        ))));
+            )
+        )
+    );
   }
 }
