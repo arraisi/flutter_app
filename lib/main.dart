@@ -45,6 +45,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _currentStep = 0;
+
+  List<Step> steps = <Step>[
+    Step(
+        title: Text("Step 1"),
+        content: Text("Instructions for step 1")
+    ),
+    Step(
+        title: Text("Step 2"),
+        content: Text("Instructions for step 2")
+    ),
+    Step(
+        title: Text("Step 3"),
+        content: Text("Instructions for step 3")
+    ),
+    Step(
+        title: Text("Step 4"),
+        content: Text("Instructions for step 4")
+    ),
+    Step(
+        title: Text("Step 5"),
+        content: Text("Instructions for step 5")
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -60,44 +84,21 @@ class _MyHomePageState extends State<MyHomePage> {
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
         ),
-        body: GridView.count(
-          crossAxisCount: 2,
-          children: <Widget>[
-            Container(
-              color: Colors.grey,
-              child: Center(
-                child: Text("Hello"),
-              ),
-            ),
-            Center(
-              child: Text("Hello"),
-            ),
-            Center(
-              child: Text("Hello"),
-            ),
-            Center(
-              child: Text("Hello"),
-            ),
-            Center(
-              child: Text("Hello"),
-            ),
-            Center(
-              child: Text("Hello"),
-            ),
-            Center(
-              child: Text("Hello"),
-            ),
-            Center(
-              child: Text("Hello"),
-            ),
-            Center(
-              child: Text("Hello"),
-            ),
-            Center(
-              child: Text("Hello"),
-            ),
-
-          ],
+        body: Stepper(
+          currentStep: _currentStep,
+          steps: steps,
+          onStepContinue: () {
+            setState(() {
+              if (_currentStep < steps.length - 1) {
+                _currentStep++;
+              }
+            });
+          },
+          onStepCancel: (){
+            setState(() {
+              _currentStep--;
+            });
+          },
         )
     );
   }
