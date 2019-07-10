@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() => runApp(MyApp());
 
@@ -64,21 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
-          child: RaisedButton(
-              onPressed: () {
-                final snkBar = SnackBar(
-                  content: Text("Pizza Time"),
-                  action: SnackBarAction(
-                    label: "Order",
-                    onPressed: () {
-                      print("Pizza is on its way");
-                    },
-                  ),
-                );
-
-                _scaffold.currentState.showSnackBar(snkBar);
-              },
-              child: Text("Click Me"))),
+          ),
     );
   }
 }
