@@ -50,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     decoration: TextDecoration.none,
     fontSize: 20,
   );
+  double sliderValue = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -64,20 +65,19 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.red,
         ),
         child: SafeArea(
-            child: Container(
-                child: Column(
-                    children: <Widget>[
-                      CupertinoSegmentedControl(
-                        children: <int, Widget>{
-                          0: Text("Section 1", style: tStyle),
-                          1: Text("Section 2", style: tStyle),
-                          2: Text("Section 3", style: tStyle),
-                        },
-                        onValueChanged: (T) {
-                          print(T);
-                        },
-                      )
-                    ],
+            child: Container (
+                child: CupertinoSlider(
+                  value: sliderValue,
+                  onChanged: (double val) {
+                    print(val);
+
+                    setState(() {
+                      sliderValue = val;
+                    });
+                  },
+                  min: 0,
+                  max: 100,
+                  divisions: 10,
                 )
             )
         )
