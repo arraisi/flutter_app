@@ -43,35 +43,37 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
+enum Movies { CaptainMarvel, Shazam }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  Future<void> OpenDialog() async {
+    switch (await showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            title: const Text("Select A Movie"),
+            children: <Widget>[
+              SimpleDialogOption(
+                  onPressed: () {
+                    Navigator.pop(context, Movies.CaptainMarvel);
+                  },
+                  child: const Text("Captain Marvel")),
+              SimpleDialogOption(
+                  onPressed: () {
+                    Navigator.pop(context, Movies.Shazam);
+                  },
+                  child: const Text("Shazam"))
+            ],
+          );
+        })) {
+      case Movies.CaptainMarvel:
+        print("Captain Marvel Selected");
+        break;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  TimeOfDay _time = TimeOfDay.now();
-  TimeOfDay picked;
-
-  Future<Null> selectTime(BuildContext context) async {
-    picked = await showTimePicker(
-      context: context,
-      initialTime: _time,
-    );
-
-    setState(() {
-      _time = picked;
-      print(_time);
-    });
+      case Movies.Shazam:
+        print("Shazam Selected");
+        break;
+    }
   }
 
   @override
@@ -89,16 +91,14 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
           child: IconButton(
-            icon: Icon(Icons.alarm),
-            onPressed: () {
-              selectTime(context);
-            },
-          )
-      ),
+        icon: Icon(Icons.play_circle_filled),
+        onPressed: () {
+          OpenDialog();
+        },
+      )),
     );
   }
 }
