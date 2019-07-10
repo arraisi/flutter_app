@@ -59,7 +59,23 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  double sliderAmount = 0;
+  DateTime _date = DateTime.now();
+
+  Future<Null> selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: _date,
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2100),
+    );
+
+    if (picked != null && picked != _date) {
+      setState(() {
+        _date = picked;
+        print(_date.toString());
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,17 +94,11 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-          child: Slider(
-            value: sliderAmount,
-            onChanged: (double delta) {
-              setState(() {
-                sliderAmount = delta;
-                print(sliderAmount);
-              });
+          child: IconButton(
+            icon: Icon(Icons.alarm),
+            onPressed: () {
+              selectDate(context);
             },
-            min: 0,
-            max: 100,
-            divisions: 100,
           )
       ),
     );
