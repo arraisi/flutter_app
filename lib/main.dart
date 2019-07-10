@@ -47,12 +47,6 @@ enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  int _selectedIndex = 1;
-  bool checkBoxValue = false;
-  int group = 1;
-  String txt = "";
-  WhyFarther _selection;
-  int _volume = 100;
 
   void _incrementCounter() {
     setState(() {
@@ -65,25 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _callContact() {
-    print("Call Contact");
-  }
-
-  void _addInfoToContact() {
-    print("Add Information Contact");
-  }
-
-  void _itemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  void ButtonClick() {
-    print("Button is clicked");
-  }
-
-  String dropdownStr = 'Batman Begins';
+  double sliderAmount = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -102,22 +78,17 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-          child: ButtonBar(
-            alignment: MainAxisAlignment.center,
-            children: <Widget>[
-              FlatButton(
-                  onPressed: () {
-
-                  },
-                  child: Text("Hello")
-              ),
-              FlatButton(
-                  onPressed: () {
-
-                  },
-                  child: Text("Second Button")
-              )
-            ],
+          child: Slider(
+            value: sliderAmount,
+            onChanged: (double delta) {
+              setState(() {
+                sliderAmount = delta;
+                print(sliderAmount);
+              });
+            },
+            min: 0,
+            max: 100,
+            divisions: 100,
           )
       ),
     );
