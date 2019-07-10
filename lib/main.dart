@@ -46,34 +46,31 @@ class MyHomePage extends StatefulWidget {
 enum Movies { CaptainMarvel, Shazam }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Future<void> OpenDialog() async {
-    switch (await showDialog(
+  Future<void> OpenAlert() async {
+    return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
-          return SimpleDialog(
-            title: const Text("Select A Movie"),
-            children: <Widget>[
-              SimpleDialogOption(
-                  onPressed: () {
-                    Navigator.pop(context, Movies.CaptainMarvel);
-                  },
-                  child: const Text("Captain Marvel")),
-              SimpleDialogOption(
-                  onPressed: () {
-                    Navigator.pop(context, Movies.Shazam);
-                  },
-                  child: const Text("Shazam"))
+          return AlertDialog(
+            title: Text("Phone Alert"),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text("Your phone is too hot!!!"),
+                  Text("Put it in Water :D")
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("I understand"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
             ],
           );
-        })) {
-      case Movies.CaptainMarvel:
-        print("Captain Marvel Selected");
-        break;
-
-      case Movies.Shazam:
-        print("Shazam Selected");
-        break;
-    }
+        });
   }
 
   @override
@@ -94,9 +91,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
           child: IconButton(
-        icon: Icon(Icons.play_circle_filled),
+        icon: Icon(Icons.add_alert),
         onPressed: () {
-          OpenDialog();
+          OpenAlert();
         },
       )),
     );
