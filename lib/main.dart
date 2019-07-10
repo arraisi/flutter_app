@@ -45,6 +45,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  TextStyle tStyle = TextStyle(
+    color: Colors.black,
+    decoration: TextDecoration.none,
+    fontSize: 20,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -59,17 +64,20 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.red,
         ),
         child: SafeArea(
-            child: Container (
-                child: RaisedButton(
-                  child: Text("Click me"),
-                  onPressed: () {
-                    showCupertinoModalPopup(
-                        context: context,
-                        builder: (BuildContext context) => CupertinoPopupSurface(
-                          child: Text("Hello"),
-                        )
-                    );
-                  },
+            child: Container(
+                child: Column(
+                    children: <Widget>[
+                      CupertinoSegmentedControl(
+                        children: <int, Widget>{
+                          0: Text("Section 1", style: tStyle),
+                          1: Text("Section 2", style: tStyle),
+                          2: Text("Section 3", style: tStyle),
+                        },
+                        onValueChanged: (T) {
+                          print(T);
+                        },
+                      )
+                    ],
                 )
             )
         )
